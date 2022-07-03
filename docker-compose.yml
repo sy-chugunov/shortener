@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    container_name: shortener-db
+    image: postgres:14.4-alpine
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  api:
+    container_name: shortener-api
+    build:
+      context: ./
+    image: shortener-api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '9002:9002'
+    env_file:
+      - .env
+    links:
+      - db
+volumes:
+  db:
+    driver: local

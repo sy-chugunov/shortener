@@ -16,8 +16,9 @@ logger = logging.getLogger(__name__)
 async def on_startup(app):
     await create_tables()
 
+
 def init():
-    logger.info('Init application')
+    logger.info("Init application")
 
     app = web.Application()
     handler = UrlHandler()
@@ -28,9 +29,9 @@ def init():
     return app, config.APP_HOST, config.APP_PORT
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app, host, port = init()
 
-    logger.info('Run application')
+    logger.info("Run application")
 
     web.run_app(app, host=host, port=port, access_log=None)

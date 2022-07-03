@@ -6,17 +6,19 @@ import validators
 
 def get_url(data):
     try:
-        url = data['url']
+        url = data["url"]
         is_valid = validators.url(url)
     except KeyError:
-        raise web.HTTPBadRequest(text='`url` field is not set in request data')
+        raise web.HTTPBadRequest(text="`url` field is not set in request data")
 
     if not is_valid:
-        raise web.HTTPBadRequest(text='`url` is invalid')
+        raise web.HTTPBadRequest(text="`url` is invalid")
 
     return url
 
+
 CHARS = string.ascii_letters + string.digits
+
 
 def generate_short_id(next_id, alphabet=CHARS):
     # offset between next_id and alphabet indexes
@@ -34,4 +36,4 @@ def generate_short_id(next_id, alphabet=CHARS):
 
     result.reverse()
 
-    return ''.join(result)
+    return "".join(result)

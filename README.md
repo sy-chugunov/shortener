@@ -20,10 +20,10 @@ $ curl -X POST -H "Content-Type: application/json" --data '{"url":"http://ya.ru"
 
 ### Open shortified url (or in browser):
 ```
-$ curl -v -X GET http://0.0.0.0:9002/a
+$ curl -v -X GET localhost:9002/a
 ```
 
 ### Remove link:
 ```
-$ curl -v -X DELETE 0.0.0.0:9002/a
+$ curl -v -X DELETE localhost:9002/a
 ```
